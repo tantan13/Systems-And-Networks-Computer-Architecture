@@ -1,0 +1,75 @@
+CS 2200 Spring 2018
+Project 4
+
+Name:Napa Vananupong
+GT Username:nvananupong3
+
+Problem 1B
+----------
+As the CPU increases, the execution time decreases, however the relationship between the number of CPUs and the execution time is not linear. There was a large decrease in execution time from 1 CPU to 2, but from 2 to 4 was really small. This is because when you increase the number of CPUs, its going to make the execution time better until you reach the point where you start to under utilize each CPU since  you don’t need it. When the degree of multiprogramming is too much, you will under-utilize CPUs, hence we can assume when we increased the # of CPUs from 2 to 4, that is what happened. Also running FIFO on 1 CPU gives me the same exact execution time overtime but for 2 and 4 CPU it changes a little on every run. 
+
+Performance Summary:
+
+1 CPU: 
+# of Context Switches: 99
+Total execution time: 67.6 s
+Total time spent in READY state: 389.9 s
+
+2 CPU:
+# of Context Switches: 113
+Total execution time: 36.8 s
+Total time spent in READY state: 84.2 s
+
+3 CPU:
+# of Context Switches: 180
+Total execution time: 33.7 s
+Total time spent in READY state: 0.7 s
+
+Problem 2B
+----------
+The totally waiting time decreases with shorter time slices as shown from the performance summary below - the shortest time spent waiting was with 200ms as the time slice aka quantum and as the time slices increased so did the waiting time. This is because the waiting time is synonymous to the ready queue and the total time spent in ready queue will decrease with shorter time slices because of the Convoy effect experienced in Round Robin scheduling. The Convoy effect is when processes spent a long period of time waiting on a longer process to finish execution. However in real OS a shorter time slice is not always the best choice because there will be a lot of overhead due to a lot of time switching contexts, which will lead to thrashing.
+
+Performance Summary:
+
+200ms:
+# of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+400ms:
+# of Context Switches: 203
+Total execution time: 67.6 s
+Total time spent in READY state: 298.8 s
+
+600ms:
+# of Context Switches: 161
+Total execution time: 67.6 s
+Total time spent in READY state: 314.5 s
+
+800ms:
+# of Context Switches: 136
+Total execution time: 67.6 s
+Total time spent in READY state: 325.4 s
+
+Problem 3B
+----------
+While it is easy to simulate an SRTF algorithm in the simulator, it is essentially impossible to implement precisely in real life and is thus usually approximated because in real life you will have a huge stack because the time remaining is dynamic and will be changing constantly, but in our simulation we are running it for fixed amounts of time, so in real life thats pretty much impossible because the process/algorithm is not able to predict the amount of time remaining ahead of time - in the simulation we are estimating.  
+
+As you can see from the below results summary, SRTF had the lowest waiting time among the three scheduling algorithms (time spent in the ready state). SRTF < RR < FIFO. This obviously makes a lot of sense because SRTF = Shortest Remaining Time First, so of course since the algorithm gives priority based on the least waiting times, it should thus have the shortest total time spent waiting because it minimizes that and gets rid of convoy effect.
+
+Performance Summary:
+
+FIFO:
+# of Context Switches: 99
+Total execution time: 67.6 s
+Total time spent in READY state: 389.9 s
+
+Round Robin 200ms:
+# of Context Switches: 362
+Total execution time: 67.5 s
+Total time spent in READY state: 285.2 s
+
+SRTF:
+# of Context Switches: 106
+Total execution time: 68.5 s
+Total time spent in READY state: 184.3 s

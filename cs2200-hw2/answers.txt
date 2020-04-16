@@ -1,0 +1,13 @@
+CS 2200 Fall 2019
+Homework 2
+
+Name: Napa (Tan) Vananupong
+GT Username: nvananupong3
+
+Short Answer
+----------
+Instead of goto label, you can do:
+
+lea  $at, label
+jalr $ra, $at
+
